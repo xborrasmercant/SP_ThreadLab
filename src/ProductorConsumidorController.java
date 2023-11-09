@@ -4,14 +4,17 @@ import java.awt.event.ItemListener;
 
 public class ProductorConsumidorController {
     private ProductorConsumidorModel model;
-
     private ProductorConsumidorView view;
-
-    private Contador contador;
-
+    private Contador mainCounter, peCounter, pfCounter, ceCounter, cfCounter;
+    
     public ProductorConsumidorController() {
-        this.contador = new Contador();
-        this.model = new ProductorConsumidorModel(contador);
+        this.mainCounter = new Contador();
+        this.peCounter = new Contador();
+        this.pfCounter = new Contador();
+        this.ceCounter = new Contador();
+        this.cfCounter = new Contador();
+
+        this.model = new ProductorConsumidorModel(mainCounter, peCounter, pfCounter, ceCounter, cfCounter);
         this.view = new ProductorConsumidorView(this);
     }
 
@@ -23,7 +26,7 @@ public class ProductorConsumidorController {
     }
 
     public void play(){
-        this.contador.setValor(0);
+        this.mainCounter.setValor(0);
 
         this.model.play();
     }
@@ -45,10 +48,10 @@ public class ProductorConsumidorController {
     }
 
     public Contador getContador() {
-        return contador;
+        return mainCounter;
     }
 
-    public void setContador(Contador contador) {
-        this.contador = contador;
+    public void setContador(Contador mainCounter) {
+        this.mainCounter = mainCounter;
     }
 }
