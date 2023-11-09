@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Visible started and dead threads amount">
+    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="TODO: Add startTime and endTime functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Consumidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Consumidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Contador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Counter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Productor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Productor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductorConsumidorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductorConsumidorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductorConsumidorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductorConsumidorModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductorConsumidorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductorConsumidorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Counter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,21 +16,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2XwkDI1EMX77nL3Ts7RxqsiZBtR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -69,12 +64,21 @@
       <option name="project" value="LOCAL" />
       <updated>1699556467454</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="TODO: Add startTime and endTime functionality">
+      <option name="closed" value="true" />
+      <created>1699557360874</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699557360874</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial" />
     <MESSAGE value="Visible started and dead threads amount" />
-    <option name="LAST_COMMIT_MESSAGE" value="Visible started and dead threads amount" />
+    <MESSAGE value="TODO: Add startTime and endTime functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="TODO: Add startTime and endTime functionality" />
   </component>
 </project>

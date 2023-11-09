@@ -5,11 +5,11 @@ public class Counter {
         this.valor = 0;
     }
 
-    public void inc() {
+    synchronized void inc() {
         this.valor++;
     }
 
-    public void desc() {
+    synchronized void desc() {
         this.valor--;
     }
 
