@@ -20,7 +20,7 @@ public class Productor implements Runnable{
 
             try {
                 Random rand = new Random();
-                int sleepTime = rand.nextInt(100);
+                int sleepTime = rand.nextInt(75);
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();

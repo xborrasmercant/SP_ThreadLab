@@ -32,8 +32,8 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
         Font font1 = new Font("SansSerif", Font.BOLD, 20);
         JLabel pe = new JLabel("Productores empezados:");
         JLabel ce = new JLabel("Consumidores empezados:");
-        JLabel pf = new JLabel("Productores empezados:");
-        JLabel cf = new JLabel("Consumidores empezados:");
+        JLabel pf = new JLabel("Productores finalizados:");
+        JLabel cf = new JLabel("Consumidores finalizados:");
         JLabel start = new JLabel("Started:");
         JLabel end = new JLabel("Ended:");
 
@@ -120,16 +120,11 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
 
     public void run() {
         while(true){
-            try{
-                Thread.sleep(100);
-                mainCounter.setText(String.valueOf(controller.getContador().getValor()));
-                peCounter.setText(String.valueOf(controller.getContador().getValor()));
-                pfCounter.setText(String.valueOf(controller.getContador().getValor()));
-                ceCounter.setText(String.valueOf(controller.getContador().getValor()));
-                cfCounter.setText(String.valueOf(controller.getContador().getValor()));
-            }catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            mainCounter.setText(String.valueOf(controller.getMainCounter().getValor()));
+            peCounter.setText(String.valueOf(controller.getPeCounter().getValor()));
+            pfCounter.setText(String.valueOf(controller.getPfCounter().getValor()));
+            ceCounter.setText(String.valueOf(controller.getCeCounter().getValor()));
+            cfCounter.setText(String.valueOf(controller.getCfCounter().getValor()));
         }
     }
 

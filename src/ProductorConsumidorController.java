@@ -47,8 +47,20 @@ public class ProductorConsumidorController {
         this.view = view;
     }
 
-    public Contador getContador() {
+    public Contador getMainCounter() {
         return mainCounter;
+    }
+    public Contador getPeCounter() {
+        return peCounter;
+    }
+    public Contador getPfCounter() {
+        return pfCounter;
+    }
+    public Contador getCeCounter() {
+        return ceCounter;
+    }
+    public Contador getCfCounter() {
+        return cfCounter;
     }
 
     public void setContador(Contador mainCounter) {
