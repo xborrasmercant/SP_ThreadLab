@@ -5,27 +5,27 @@ import java.awt.event.ItemListener;
 public class ProductorConsumidorController {
     private ProductorConsumidorModel model;
     private ProductorConsumidorView view;
-    private Contador mainCounter, peCounter, pfCounter, ceCounter, cfCounter;
-    
+    private Counter mainCounter, peCounter, pfCounter, ceCounter, cfCounter;
+
     public ProductorConsumidorController() {
-        this.mainCounter = new Contador();
-        this.peCounter = new Contador();
-        this.pfCounter = new Contador();
-        this.ceCounter = new Contador();
-        this.cfCounter = new Contador();
+        this.mainCounter = new Counter();
+        this.peCounter = new Counter();
+        this.pfCounter = new Counter();
+        this.ceCounter = new Counter();
+        this.cfCounter = new Counter();
 
         this.model = new ProductorConsumidorModel(mainCounter, peCounter, pfCounter, ceCounter, cfCounter);
         this.view = new ProductorConsumidorView(this);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ProductorConsumidorController controller = new ProductorConsumidorController();
 
         Thread hilo = new Thread(controller.getView());
         hilo.start();
     }
 
-    public void play(){
+    public void play() {
         this.mainCounter.setValor(0);
 
         this.model.play();
@@ -47,23 +47,24 @@ public class ProductorConsumidorController {
         this.view = view;
     }
 
-    public Contador getMainCounter() {
+    public Counter getMainCounter() {
         return mainCounter;
     }
-    public Contador getPeCounter() {
+
+    public Counter getPeCounter() {
         return peCounter;
     }
-    public Contador getPfCounter() {
+
+    public Counter getPfCounter() {
         return pfCounter;
     }
-    public Contador getCeCounter() {
+
+    public Counter getCeCounter() {
         return ceCounter;
     }
-    public Contador getCfCounter() {
+
+    public Counter getCfCounter() {
         return cfCounter;
     }
 
-    public void setContador(Contador mainCounter) {
-        this.mainCounter = mainCounter;
-    }
 }

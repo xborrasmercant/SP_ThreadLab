@@ -2,13 +2,13 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ProductorConsumidorModel{
-    private Contador mainCounter;
-    private Contador peCounter;
-    private Contador pfCounter;
-    private Contador ceCounter;
-    private Contador cfCounter;
+    private Counter mainCounter;
+    private Counter peCounter;
+    private Counter pfCounter;
+    private Counter ceCounter;
+    private Counter cfCounter;
 
-    public ProductorConsumidorModel(Contador mainCounter, Contador peCounter, Contador pfCounter, Contador ceCounter, Contador cfCounter) {
+    public ProductorConsumidorModel(Counter mainCounter, Counter peCounter, Counter pfCounter, Counter ceCounter, Counter cfCounter) {
         this.mainCounter = mainCounter;
         this.peCounter = peCounter;
         this.pfCounter = pfCounter;

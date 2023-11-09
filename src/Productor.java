@@ -2,12 +2,12 @@ import java.util.Random;
 
 public class Productor implements Runnable{
 
-    private Contador counter;
-    private Contador peCounter;
-    private Contador pfCounter;
+    private Counter mainCounter;
+    private Counter peCounter;
+    private Counter pfCounter;
 
-    public Productor(Contador counter, Contador peCounter, Contador pfCounter) {
-        this.counter = counter;
+    public Productor(Counter mainCounter, Counter peCounter, Counter pfCounter) {
+        this.mainCounter = mainCounter;
         this.peCounter = peCounter;
         this.pfCounter = pfCounter;
     }
@@ -16,7 +16,7 @@ public class Productor implements Runnable{
         peCounter.inc();
 
         for (int i = 0; i < 100; i++){
-            counter.inc();
+            mainCounter.inc();
 
             try {
                 Random rand = new Random();

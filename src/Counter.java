@@ -1,7 +1,7 @@
-public class Contador {
+public class Counter {
     private int valor;
 
-    public Contador() {
+    public Counter() {
         this.valor = 0;
     }
 

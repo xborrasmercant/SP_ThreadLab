@@ -5,25 +5,16 @@ import java.awt.event.*;
 import java.util.Random;
 
 public class ProductorConsumidorView extends JFrame implements ActionListener, ItemListener, Runnable {
-    JButton startButton;
-    JTextField mainCounter;
-    JTextField peCounter, ceCounter, pfCounter, cfCounter, startTime, endTime;
+    private JButton startButton;
+    private JTextField mainCounter;
+    private JTextField peCounter, ceCounter, pfCounter, cfCounter, startTime, endTime;
 
     ProductorConsumidorController controller;
 
     public ProductorConsumidorView(ProductorConsumidorController controller) {
-        this.controller = controller;
-        startButton = new JButton("Play");
-        mainCounter = new JTextField("0");
-        peCounter = new JTextField("0");
-        ceCounter = new JTextField("0");
-        pfCounter = new JTextField("0");
-        cfCounter = new JTextField("0");
-        startTime = new JTextField("0");
-        endTime = new JTextField("0");
-        startButton.addActionListener(this);
+       this.controller = controller;
         configureJFrame();
-
+        addComponentsToPane(this.getContentPane());
         setVisible(true);
     }
 
@@ -36,6 +27,16 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
         JLabel cf = new JLabel("Consumidores finalizados:");
         JLabel start = new JLabel("Started:");
         JLabel end = new JLabel("Ended:");
+
+        this.startButton = new JButton("Play");
+        this.mainCounter = new JTextField("0");
+        this.peCounter = new JTextField("0");
+        this.ceCounter = new JTextField("0");
+        this.pfCounter = new JTextField("0");
+        this.cfCounter = new JTextField("0");
+        this.startTime = new JTextField("0");
+        this.endTime = new JTextField("0");
+        this.startButton.addActionListener(this);
 
         c.insets = new Insets(5, 5, 5, 5);
         this.startButton.setPreferredSize(new Dimension(100,50));
@@ -115,7 +116,6 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500, 600);
         setLocationRelativeTo(null);
-        this.addComponentsToPane(this.getContentPane());
     }
 
     public void run() {
