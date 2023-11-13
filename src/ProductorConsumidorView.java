@@ -7,107 +7,51 @@ import java.util.Random;
 public class ProductorConsumidorView extends JFrame implements ActionListener, ItemListener, Runnable {
     private JButton startButton;
     private JTextField mainCounter;
-    private JTextField peCounter, ceCounter, pfCounter, cfCounter, startTime, endTime;
+    private ConfigurationPanel configPanel;
+    private StatisticsPanel statsPanel;
 
     ProductorConsumidorController controller;
 
     public ProductorConsumidorView(ProductorConsumidorController controller) {
        this.controller = controller;
-        configureJFrame();
-        addComponentsToPane(this.getContentPane());
-        setVisible(true);
+       configureJFrame();
+       addComponentsToPanel(this.getContentPane());
+       setVisible(true);
     }
 
-    private void addComponentsToPane(Container panel){
+    private void addComponentsToPanel(Container panel){
         GridBagConstraints c = new GridBagConstraints();
         Font font1 = new Font("SansSerif", Font.BOLD, 20);
-        JLabel pe = new JLabel("Productores empezados:");
-        JLabel ce = new JLabel("Consumidores empezados:");
-        JLabel pf = new JLabel("Productores finalizados:");
-        JLabel cf = new JLabel("Consumidores finalizados:");
-        JLabel start = new JLabel("Started:");
-        JLabel end = new JLabel("Ended:");
 
-        this.startButton = new JButton("Play");
-        this.mainCounter = new JTextField("0");
-        this.peCounter = new JTextField("0");
-        this.ceCounter = new JTextField("0");
-        this.pfCounter = new JTextField("0");
-        this.cfCounter = new JTextField("0");
-        this.startTime = new JTextField("0");
-        this.endTime = new JTextField("0");
-        this.startButton.addActionListener(this);
+        startButton = new JButton("Play");
+        mainCounter = new JTextField("0");
+        configPanel = new ConfigurationPanel();
+        statsPanel = new StatisticsPanel();
+
+        startButton.addActionListener(this);
+
 
         c.insets = new Insets(5, 5, 5, 5);
-        this.startButton.setPreferredSize(new Dimension(100,50));
-        this.startButton.setFont(font1);
+        startButton.setPreferredSize(new Dimension(100,50));
+        startButton.setFont(font1);
         c.gridx = 0;
         c.gridy = 0;
-        panel.add(this.startButton, c);
+        panel.add(startButton, c);
 
-        this.mainCounter.setPreferredSize(new Dimension(100,50));
-        this.mainCounter.setFont(font1);
-        this.mainCounter.setHorizontalAlignment(JTextField.CENTER);
+        mainCounter.setPreferredSize(new Dimension(100,50));
+        mainCounter.setFont(font1);
+        mainCounter.setHorizontalAlignment(JTextField.CENTER);
         c.gridx++;
-        panel.add(this.mainCounter, c);
+        panel.add(mainCounter, c);
 
-        // PRODUCTORES EMPEZADOS
+        // CONFIG PANEL
         c.gridx = 0;
-        c.gridy++;
-        panel.add(pe, c);
+        c.gridy ++;
+        panel.add(configPanel, c);
 
-        c.gridx++;
-        modifyTextField(peCounter, 50, 25);
-        panel.add (peCounter, c);
-
-        // CONSUMIDORES EMPEZADOS
-        c.gridx = 0;
-        c.gridy++;
-        panel.add(ce, c);
-
-        c.gridx++;
-        modifyTextField(ceCounter, 50, 25);
-        panel.add (ceCounter, c);
-
-        // PRODUCTORES FINALIZADOS
-        c.gridx = 0;
-        c.gridy++;
-        panel.add(pf, c);
-
-        c.gridx++;
-        modifyTextField(pfCounter, 50, 25);
-        panel.add (pfCounter, c);
-
-
-        // PRODUCTORES FINALIZADOS
-        c.gridx = 0;
-        c.gridy++;
-        panel.add(cf, c);
-
-        c.gridx++;
-        modifyTextField(cfCounter, 50, 25);
-        panel.add (cfCounter, c);
-
-
-        // START
-
-        c.gridx = 0;
-        c.gridy++;
-        panel.add(start, c);
-
-        c.gridx++;
-        modifyTextField(startTime, 50, 25);
-        panel.add (startTime, c);
-
-
-        // END
-        c.gridx = 0;
-        c.gridy++;
-        panel.add(end, c);
-
-        c.gridx++;
-        modifyTextField(endTime, 50, 25);
-        panel.add (endTime, c);
+        // STATS PANEL
+        c.gridx ++;
+        panel.add(statsPanel, c);
 
     }
 
@@ -121,10 +65,10 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
     public void run() {
         while(true){
             mainCounter.setText(String.valueOf(controller.getMainCounter().getValor()));
-            peCounter.setText(String.valueOf(controller.getPeCounter().getValor()));
-            pfCounter.setText(String.valueOf(controller.getPfCounter().getValor()));
-            ceCounter.setText(String.valueOf(controller.getCeCounter().getValor()));
-            cfCounter.setText(String.valueOf(controller.getCfCounter().getValor()));
+            statsPanel.getPeCounter().setText(String.valueOf(controller.getPeCounter().getValor()));
+            statsPanel.getPfCounter().setText(String.valueOf(controller.getPfCounter().getValor()));
+            statsPanel.getCeCounter().setText(String.valueOf(controller.getCeCounter().getValor()));
+            statsPanel.getCfCounter().setText(String.valueOf(controller.getCfCounter().getValor()));
         }
     }
 
@@ -176,5 +120,21 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
 
     public void setController(ProductorConsumidorController controller) {
         this.controller = controller;
+    }
+
+    public ConfigurationPanel getConfigPanel() {
+        return configPanel;
+    }
+
+    public void setConfigPanel(ConfigurationPanel configPanel) {
+        this.configPanel = configPanel;
+    }
+
+    public StatisticsPanel getStatsPanel() {
+        return statsPanel;
+    }
+
+    public void setStatsPanel(StatisticsPanel statsPanel) {
+        this.statsPanel = statsPanel;
     }
 }
