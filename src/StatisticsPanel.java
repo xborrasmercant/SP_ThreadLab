@@ -68,10 +68,10 @@ public class StatisticsPanel extends JPanel{
         c.gridy++;
         c.gridwidth = 1;
         c.insets = new Insets(5, 5, 5, 5);
-        add(elapsedTime, c);
+        add(elapsedTime, c);                                        // Label
 
         c.gridx++;
-        add(elapsedTimeField, c);
+        add(elapsedTimeField, c);                                   // TextField
 
 
     }

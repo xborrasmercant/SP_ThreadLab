@@ -60,13 +60,13 @@ public class LabView extends JFrame implements ActionListener, Runnable {
     public void run() {
         while(true){
             // PRODUCT Updating
-            prodPanel.getProductCounter().setText(String.valueOf(controller.getProductCounter().getValor()));
+            prodPanel.getProductStockField().setText(String.valueOf(controller.getProductStock().getStockValue()));
 
             // AGENT TABLE Updating
-            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPeCounter().getValor()),0, 1);
-            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPfCounter().getValor()),0, 2);
-            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCeCounter().getValor()),1, 1);
-            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCfCounter().getValor()),1, 2);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPeCounter().getStockValue()),0, 1);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPfCounter().getStockValue()),0, 2);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCeCounter().getStockValue()),1, 1);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCfCounter().getStockValue()),1, 2);
 
             // THREAD TABLE Updating
             statsPanel.getThreadTable().setValueAt((getLabModel().getAgentElapsedTime() + " ns"),0, 1);
@@ -79,12 +79,12 @@ public class LabView extends JFrame implements ActionListener, Runnable {
         }
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
         switch (str) {
             case "Start":
+
                 System.out.println("ACTION - Start Button Pressed");
                 int producerAmount, consumerAmount, producerTime, consumerTime;
 
@@ -116,6 +116,9 @@ public class LabView extends JFrame implements ActionListener, Runnable {
 
                 System.out.println("Producer Amount: " + producerAmount + " | Consumer Amount: " + consumerAmount);
                 System.out.println("Producer Time: " + producerTime + " ms | Consumer Time: " + consumerTime + " ms");
+                System.out.println("Created Total Time: " + getLabModel().getAgentElapsedTime() + " ns |" + " Created Average Time: " + getAgentAvgTime() + " ns");
+                System.out.println("Started Total Time: " + getLabModel().getThreadElapsedTime() + " ns |" + " Started Average Time: " + getThreadAvgTime() + " ns");
+                System.out.println("Total Elapsed Time: " + getLabModel().getTotalElapsedTime() + " ms");
                 System.out.println("=============================================");
                 break;
             default:

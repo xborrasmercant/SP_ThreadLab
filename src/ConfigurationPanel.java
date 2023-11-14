@@ -37,34 +37,33 @@ public class ConfigurationPanel extends JPanel {
         // PRODUCER Amount
         c.gridx = 0;
         c.gridy = 0;
-        add(producerQtyLabel, c); // Label
+        add(producerQtyLabel, c);                           // Label
 
         c.gridy++;
-        add(producerQtyField, c); // TextField
-
+        add(producerQtyField, c);                           // TextField
 
         // CONSUMER Amount
         c.gridx++;
         c.gridy = 0;
-        add(consumerQtyLabel, c); // Label
+        add(consumerQtyLabel, c);                           // Label
 
         c.gridy++;
-        add(consumerQtyField, c); // TextField
+        add(consumerQtyField, c);                           // TextField
 
         c.fill = GridBagConstraints.HORIZONTAL;
 
         // PRODUCER TIME Config
         c.gridx = 0;
         c.gridy++;
-        add(producerRTime, c); // Label
+        add(producerRTime, c);                              // Label
 
         c.gridx++;
-        add(producerRCheckbox, c); // Checkbox
+        add(producerRCheckbox, c);                          // Checkbox
 
         c.gridwidth = 2;
         c.gridx = 0;
         c.gridy++;
-        add(producerTSlider, c); // Slider
+        add(producerTSlider, c);                             // Slider
 
         c.gridwidth = 1;
 
@@ -72,15 +71,15 @@ public class ConfigurationPanel extends JPanel {
         // CONSUMER TIME Config
         c.gridx = 0;
         c.gridy++;
-        add(consumerRTime, c); // Label
+        add(consumerRTime, c);                               // Label
 
         c.gridx++;
-        add(consumerRCheckbox, c); // Checkbox
+        add(consumerRCheckbox, c);                           // Checkbox
 
         c.gridwidth = 2;
         c.gridx = 0;
         c.gridy++;
-        add(consumerTSlider, c); // Slider
+        add(consumerTSlider, c);                             // Slider
 
         c.gridwidth = 1;
 

@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class ProductPanel extends JPanel{
     private JButton startButton;
-    private JTextField productCounter;
+    private JTextField productStockField;
 
 
     public ProductPanel() {
@@ -18,7 +18,7 @@ public class ProductPanel extends JPanel{
 
         // COMPONENTS Initialization
         startButton = new JButton("Start");
-        productCounter = new JTextField("0");
+        productStockField = new JTextField("0");
 
         // START Button
         c.insets = new Insets(5, 5, 5, 5);
@@ -26,14 +26,14 @@ public class ProductPanel extends JPanel{
         startButton.setFont(font1);
         c.gridx = 0;
         c.gridy = 0;
-        add(startButton, c);
+        add(startButton, c);                                                        // Button
 
         // PRODUCT Counter
-        productCounter.setPreferredSize(new Dimension(100,50));
-        productCounter.setFont(font1);
-        productCounter.setHorizontalAlignment(JTextField.CENTER);
+        productStockField.setPreferredSize(new Dimension(100,50));
+        productStockField.setFont(font1);
+        productStockField.setHorizontalAlignment(JTextField.CENTER);
         c.gridx++;
-        add(productCounter, c);
+        add(productStockField, c);                                                  // TextField
     }
 
     public void configurePanel() {
@@ -51,11 +51,11 @@ public class ProductPanel extends JPanel{
         this.startButton = startButton;
     }
 
-    public JTextField getProductCounter() {
-        return productCounter;
+    public JTextField getProductStockField() {
+        return productStockField;
     }
 
-    public void setProductCounter(JTextField productCounter) {
-        this.productCounter = productCounter;
+    public void setProductStockField(JTextField productStockField) {
+        this.productStockField = productStockField;
     }
 }

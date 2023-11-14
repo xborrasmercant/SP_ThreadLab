@@ -59,13 +59,8 @@ public class LabModel{
         }
 
         totalElapsedTime = System.currentTimeMillis() - totalElapsedTime;
-
-        System.out.println("Agent Total Time: " + agentElapsedTime + " ns");
-        System.out.println("Thread Total Time: " + threadElapsedTime + " ns");
-
-        System.out.println("Agent Average Time: " + agentElapsedTime / (producerAmount + consumerAmount) + " ns");
-        System.out.println("Thread Average Time: " + threadElapsedTime / (producerAmount + consumerAmount) + " ns");
     }
+
 
     public long getTotalElapsedTime() {
         return totalElapsedTime;

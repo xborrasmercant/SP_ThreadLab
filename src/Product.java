@@ -1,23 +1,23 @@
 public class Product {
-    private int valor;
+    private int stockValue;
 
     public Product() {
-        this.valor = 0;
+        this.stockValue = 0;
     }
 
     synchronized void produce() {
-        this.valor++;
+        this.stockValue++;
     }
 
     synchronized void consume() {
-        this.valor--;
+        this.stockValue--;
     }
 
-    public int getValor() {
-        return this.valor;
+    public int getStockValue() {
+        return stockValue;
     }
 
-    public void setValor(int valor) {
-        this.valor = valor;
+    public void setStockValue(int stockValue) {
+        this.stockValue = stockValue;
     }
 }

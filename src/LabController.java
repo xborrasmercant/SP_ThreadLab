@@ -2,16 +2,16 @@
 public class LabController {
     private LabModel model;
     private LabView view;
-    private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
+    private Product productStock, peCounter, pfCounter, ceCounter, cfCounter;
 
     public LabController() {
-        this.productCounter = new Product();
+        this.productStock = new Product();
         this.peCounter = new Product();
         this.pfCounter = new Product();
         this.ceCounter = new Product();
         this.cfCounter = new Product();
 
-        this.model = new LabModel(productCounter, peCounter, pfCounter, ceCounter, cfCounter);
+        this.model = new LabModel(productStock, peCounter, pfCounter, ceCounter, cfCounter);
         this.view = new LabView(this);
     }
 
@@ -28,11 +28,11 @@ public class LabController {
     }
 
     public void resetCounters() {
-        productCounter.setValor(0);
-        peCounter.setValor(0);
-        ceCounter.setValor(0);
-        pfCounter.setValor(0);
-        cfCounter.setValor(0);
+        productStock.setStockValue(0);
+        peCounter.setStockValue(0);
+        ceCounter.setStockValue(0);
+        pfCounter.setStockValue(0);
+        cfCounter.setStockValue(0);
         model.setAgentElapsedTime(0);
         model.setThreadElapsedTime(0);
     }
@@ -54,12 +54,12 @@ public class LabController {
         this.view = view;
     }
 
-    public void setProductCounter(Product productCounter) {
-        this.productCounter = productCounter;
+    public Product getProductStock() {
+        return productStock;
     }
 
-    public Product getProductCounter() {
-        return productCounter;
+    public void setProductStock(Product productStock) {
+        this.productStock = productStock;
     }
 
     public Product getPeCounter() {
