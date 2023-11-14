@@ -4,11 +4,13 @@ public class Producer implements Runnable{
     private Product productCounter;
     private Product peCounter;
     private Product pfCounter;
+    private int producerTime;
 
-    public Producer(Product productCounter, Product peProduct, Product pfProduct) {
+    public Producer(Product productCounter, Product peProduct, Product pfProduct, int producerTime) {
         this.productCounter = productCounter;
         this.peCounter = peProduct;
         this.pfCounter = pfProduct;
+        this.producerTime = producerTime;
     }
 
     public void run() {
@@ -19,7 +21,7 @@ public class Producer implements Runnable{
 
             try {
                 Random rand = new Random();
-                int sleepTime = rand.nextInt(75);
+                int sleepTime = rand.nextInt(producerTime);
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();

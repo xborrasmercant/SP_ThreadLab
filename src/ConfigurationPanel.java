@@ -22,8 +22,8 @@ public class ConfigurationPanel extends JPanel {
         JLabel consumerQtyLabel = new JLabel("Consumer Amount", SwingConstants.CENTER);
 
         // COMPONENT Initialization
-        this.producerTSlider = new JSlider(0,100);
-        this.consumerTSlider = new JSlider(0,100);
+        this.producerTSlider = new JSlider(1,100);
+        this.consumerTSlider = new JSlider(1,100);
         this.producerRCheckbox = new JCheckBox();
         this.consumerRCheckbox = new JCheckBox();
         this.producerQtyField = new JTextField("100");

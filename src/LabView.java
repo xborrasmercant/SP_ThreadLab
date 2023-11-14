@@ -78,9 +78,17 @@ public class LabView extends JFrame implements ActionListener, ItemListener, Run
 
                 int producerAmount = Integer.parseInt(configPanel.getProducerQtyField().getText());
                 int consumerAmount = Integer.parseInt(configPanel.getConsumerQtyField().getText());
+                int producerTime = configPanel.getProducerTSlider().getValue();
+                int consumerTime = configPanel.getConsumerTSlider().getValue();
+
+                System.out.println("Producer Amount: " + producerAmount + " | Consumer Amount: " + consumerAmount);
+                System.out.println("Producer Time: " + producerTime + " ms | Consumer Time: " + consumerTime + " ms");
 
                 controller.getModel().setProducerAmount(producerAmount);
                 controller.getModel().setConsumerAmount(consumerAmount);
+                controller.getModel().setProducerTime(producerTime);
+                controller.getModel().setConsumerTime(consumerTime);
+
 
                 prodPanel.getProductCounter().setText("0");
                 controller.play();

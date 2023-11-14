@@ -2,13 +2,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class LabModel{
-    private Product productCounter;
-    private Product peCounter;
-    private Product pfCounter;
-    private Product ceCounter;
-    private Product cfCounter;
-    private int producerAmount;
-    private int consumerAmount;
+    private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
+    private int producerAmount, consumerAmount, producerTime, consumerTime;
 
     public LabModel(Product productCounter, Product peCounter, Product pfCounter, Product ceCounter, Product cfCounter) {
         this.productCounter = productCounter;
@@ -18,18 +13,20 @@ public class LabModel{
         this.cfCounter = cfCounter;
         this.producerAmount = 100;
         this.consumerAmount = 100;
+        this.producerTime = 50;
+        this.consumerTime = 50;
     }
 
     public void play(){
 
         for (int i = 0; i < producerAmount; i++){
-            Producer producer = new Producer(productCounter, peCounter, pfCounter);
+            Producer producer = new Producer(productCounter, peCounter, pfCounter, producerTime);
             Thread productionThread = new Thread(producer);
             productionThread.start();
         }
 
         for (int i = 0; i < consumerAmount; i++){
-            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter);
+            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter, consumerTime);
             Thread consumerThread = new Thread(consumer);
             consumerThread.start();
         }
@@ -89,5 +86,21 @@ public class LabModel{
 
     public void setConsumerAmount(int consumerAmount) {
         this.consumerAmount = consumerAmount;
+    }
+
+    public int getProducerTime() {
+        return producerTime;
+    }
+
+    public void setProducerTime(int producerTime) {
+        this.producerTime = producerTime;
+    }
+
+    public int getConsumerTime() {
+        return consumerTime;
+    }
+
+    public void setConsumerTime(int consumerTime) {
+        this.consumerTime = consumerTime;
     }
 }
