@@ -23,9 +23,20 @@ public class LabController {
     }
 
     public void play() {
-        this.productCounter.setValor(0);
-        this.model.play();
+        resetCounters();
+        model.play();
     }
+
+    public void resetCounters() {
+        productCounter.setValor(0);
+        peCounter.setValor(0);
+        ceCounter.setValor(0);
+        pfCounter.setValor(0);
+        cfCounter.setValor(0);
+        model.setAgentElapsedTime(0);
+        model.setThreadElapsedTime(0);
+    }
+
 
     public LabModel getModel() {
         return model;

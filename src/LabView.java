@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 
-public class LabView extends JFrame implements ActionListener, ItemListener, Runnable {
+public class LabView extends JFrame implements ActionListener, Runnable {
     private ProductPanel prodPanel;
     private ConfigurationPanel configPanel;
     private StatisticsPanel statsPanel;
@@ -29,7 +30,6 @@ public class LabView extends JFrame implements ActionListener, ItemListener, Run
 
         // DEFAULT Config
         c.fill = GridBagConstraints.VERTICAL;
-
 
         // PRODUCT Panel
         c.insets = new Insets(5, 5, 5, 5);
@@ -59,12 +59,20 @@ public class LabView extends JFrame implements ActionListener, ItemListener, Run
 
     public void run() {
         while(true){
+            // PRODUCT Updating
             prodPanel.getProductCounter().setText(String.valueOf(controller.getProductCounter().getValor()));
 
+            // AGENT TABLE Updating
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPeCounter().getValor()),0, 1);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPfCounter().getValor()),0, 2);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCeCounter().getValor()),1, 1);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCfCounter().getValor()),1, 2);
+
+            // THREAD TABLE Updating
+            statsPanel.getThreadTable().setValueAt((getLabModel().getAgentElapsedTime() + " ns"),0, 1);
+            statsPanel.getThreadTable().setValueAt((getAgentAvgTime() + " ns"),0, 2);
+            statsPanel.getThreadTable().setValueAt((getLabModel().getThreadElapsedTime() + " ns"),1, 1);
+            statsPanel.getThreadTable().setValueAt((getThreadAvgTime() + " ns"),1, 2);
         }
     }
 
@@ -74,40 +82,54 @@ public class LabView extends JFrame implements ActionListener, ItemListener, Run
         String str = e.getActionCommand();
         switch (str) {
             case "Start":
-                System.out.println("ACTION - Start button pressed");
+                System.out.println("ACTION - Start Button Pressed");
+                int producerAmount, consumerAmount, producerTime, consumerTime;
 
-                int producerAmount = Integer.parseInt(configPanel.getProducerQtyField().getText());
-                int consumerAmount = Integer.parseInt(configPanel.getConsumerQtyField().getText());
-                int producerTime = configPanel.getProducerTSlider().getValue();
-                int consumerTime = configPanel.getConsumerTSlider().getValue();
+                producerAmount = Integer.parseInt(configPanel.getProducerQtyField().getText());
+                consumerAmount = Integer.parseInt(configPanel.getConsumerQtyField().getText());
 
-                System.out.println("Producer Amount: " + producerAmount + " | Consumer Amount: " + consumerAmount);
-                System.out.println("Producer Time: " + producerTime + " ms | Consumer Time: " + consumerTime + " ms");
+                // Randomization CheckBoxes
+                if (configPanel.getProducerRCheckbox().isSelected()) {
+                    producerTime = (int) (Math.random()*100) + 1;
+                }
+                else {
+                    producerTime = configPanel.getProducerTSlider().getValue();
+                }
 
+                if (configPanel.getConsumerRCheckbox().isSelected()) {
+                    consumerTime = (int) (Math.random()*100) + 1;
+                }
+                else {
+                    consumerTime = configPanel.getConsumerTSlider().getValue();
+                }
+
+                // Setting Final Values
                 controller.getModel().setProducerAmount(producerAmount);
                 controller.getModel().setConsumerAmount(consumerAmount);
                 controller.getModel().setProducerTime(producerTime);
                 controller.getModel().setConsumerTime(consumerTime);
 
-
-                prodPanel.getProductCounter().setText("0");
                 controller.play();
+
+                System.out.println("Producer Amount: " + producerAmount + " | Consumer Amount: " + consumerAmount);
+                System.out.println("Producer Time: " + producerTime + " ms | Consumer Time: " + consumerTime + " ms");
+                System.out.println("=============================================");
                 break;
             default:
                 System.err.println("ACTION - Not treated action: " + e);
         }
     }
-    @Override
-    public void itemStateChanged(ItemEvent itemEvent) {
-        int estado = itemEvent.getStateChange();
-        if (estado == ItemEvent.SELECTED) {
-        } else {
-        }
+
+    public LabModel getLabModel() {
+        return controller.getModel();
     }
 
-    public void modifyTextField (JTextField txtField, int width, int height) {
-        txtField.setPreferredSize(new Dimension(width,height));
-        txtField.setHorizontalAlignment(JTextField.CENTER);
+    public long getAgentAvgTime() {
+        return getLabModel().getAgentElapsedTime() / (getLabModel().getProducerAmount() + getLabModel().getConsumerAmount());
+    }
+
+    public long getThreadAvgTime() {
+        return getLabModel().getThreadElapsedTime() / (getLabModel().getProducerAmount() + getLabModel().getConsumerAmount());
     }
 
     public ProductPanel getProdPanel() {
