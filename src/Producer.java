@@ -1,11 +1,12 @@
 import java.util.Random;
 
-public class Productor implements Runnable{
+public class Producer implements Runnable{
     private Product productCounter;
     private Product peCounter;
     private Product pfCounter;
+    private int producerAmount;
 
-    public Productor(Product productCounter, Product peProduct, Product pfProduct) {
+    public Producer(Product productCounter, Product peProduct, Product pfProduct) {
         this.productCounter = productCounter;
         this.peCounter = peProduct;
         this.pfCounter = pfProduct;

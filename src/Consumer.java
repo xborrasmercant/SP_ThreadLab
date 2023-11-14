@@ -1,11 +1,11 @@
 import java.util.Random;
 
-public class Consumidor implements Runnable{
+public class Consumer implements Runnable{
     private Product productCounter;
     private Product ceCounter;
     private Product cfCounter;
 
-    public Consumidor(Product productCounter, Product ceCounter, Product cfCounter) {
+    public Consumer(Product productCounter, Product ceCounter, Product cfCounter) {
         this.productCounter = productCounter;
         this.ceCounter = ceCounter;
         this.cfCounter = cfCounter;

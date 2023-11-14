@@ -1,22 +1,22 @@
 
-public class ProductorConsumidorController {
-    private ProductorConsumidorModel model;
-    private ProductorConsumidorView view;
+public class LabController {
+    private LabModel model;
+    private LabView view;
     private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
 
-    public ProductorConsumidorController() {
+    public LabController() {
         this.productCounter = new Product();
         this.peCounter = new Product();
         this.pfCounter = new Product();
         this.ceCounter = new Product();
         this.cfCounter = new Product();
 
-        this.model = new ProductorConsumidorModel(productCounter, peCounter, pfCounter, ceCounter, cfCounter);
-        this.view = new ProductorConsumidorView(this);
+        this.model = new LabModel(productCounter, peCounter, pfCounter, ceCounter, cfCounter);
+        this.view = new LabView(this);
     }
 
     public static void main(String[] args) {
-        ProductorConsumidorController controller = new ProductorConsumidorController();
+        LabController controller = new LabController();
 
         Thread hilo = new Thread(controller.getView());
         hilo.start();
@@ -27,20 +27,24 @@ public class ProductorConsumidorController {
         this.model.play();
     }
 
-    public ProductorConsumidorModel getModel() {
+    public LabModel getModel() {
         return model;
     }
 
-    public void setModel(ProductorConsumidorModel model) {
+    public void setModel(LabModel model) {
         this.model = model;
     }
 
-    public ProductorConsumidorView getView() {
+    public LabView getView() {
         return view;
     }
 
-    public void setView(ProductorConsumidorView view) {
+    public void setView(LabView view) {
         this.view = view;
+    }
+
+    public void setProductCounter(Product productCounter) {
+        this.productCounter = productCounter;
     }
 
     public Product getProductCounter() {

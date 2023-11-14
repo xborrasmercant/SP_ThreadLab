@@ -2,14 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ProductorConsumidorView extends JFrame implements ActionListener, ItemListener, Runnable {
+public class LabView extends JFrame implements ActionListener, ItemListener, Runnable {
     private ProductPanel prodPanel;
     private ConfigurationPanel configPanel;
     private StatisticsPanel statsPanel;
 
-    ProductorConsumidorController controller;
+    LabController controller;
 
-    public ProductorConsumidorView(ProductorConsumidorController controller) {
+    public LabView(LabController controller) {
        this.controller = controller;
        configureJFrame();
        addComponentsToPanel(this.getContentPane());
@@ -61,13 +61,10 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
         while(true){
             prodPanel.getProductCounter().setText(String.valueOf(controller.getProductCounter().getValor()));
 
-            statsPanel.getTable
-
-
-            statsPanel.getPeCounter().setText(String.valueOf(controller.getPeCounter().getValor()));
-            statsPanel.getPfCounter().setText(String.valueOf(controller.getPfCounter().getValor()));
-            statsPanel.getCeCounter().setText(String.valueOf(controller.getCeCounter().getValor()));
-            statsPanel.getCfCounter().setText(String.valueOf(controller.getCfCounter().getValor()));
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPeCounter().getValor()),0, 1);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPfCounter().getValor()),0, 2);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCeCounter().getValor()),1, 1);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCfCounter().getValor()),1, 2);
         }
     }
 
@@ -99,12 +96,19 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
         txtField.setHorizontalAlignment(JTextField.CENTER);
     }
 
+    public ProductPanel getProdPanel() {
+        return prodPanel;
+    }
 
-    public ProductorConsumidorController getController() {
+    public void setProdPanel(ProductPanel prodPanel) {
+        this.prodPanel = prodPanel;
+    }
+
+    public LabController getController() {
         return controller;
     }
 
-    public void setController(ProductorConsumidorController controller) {
+    public void setController(LabController controller) {
         this.controller = controller;
     }
 
