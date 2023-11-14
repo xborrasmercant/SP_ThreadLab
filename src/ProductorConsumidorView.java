@@ -60,6 +60,10 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
     public void run() {
         while(true){
             prodPanel.getProductCounter().setText(String.valueOf(controller.getProductCounter().getValor()));
+
+            statsPanel.getTable
+
+
             statsPanel.getPeCounter().setText(String.valueOf(controller.getPeCounter().getValor()));
             statsPanel.getPfCounter().setText(String.valueOf(controller.getPfCounter().getValor()));
             statsPanel.getCeCounter().setText(String.valueOf(controller.getCeCounter().getValor()));

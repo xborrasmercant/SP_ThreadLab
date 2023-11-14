@@ -1,4 +1,4 @@
-import CustomUI.AgentsTable;
+import CustomUI.CustomTable;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class StatisticsPanel extends JPanel{
     private JTextField peCounter, ceCounter, pfCounter, cfCounter, startTime, endTime;
-    private AgentsTable agentsTable;
+    private CustomTable agentTable, threadTable;
 
     public StatisticsPanel() {
         configurePanel();
@@ -31,12 +31,37 @@ public class StatisticsPanel extends JPanel{
         this.cfCounter = new JTextField("0");
         this.startTime = new JTextField("0");
         this.endTime = new JTextField("0");
-        agentsTable = new AgentsTable();
+        agentTable = new CustomTable("Agent");
+        threadTable = new CustomTable("Thread");
 
-        add(agentsTable);
+        // DEFAULT Config
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        // AGENTS Table
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(5, 5, 0, 5);
+        add(agentTable.getTableHeader(), c);
+
+        c.gridy++;
+        c.insets = new Insets(0, 5, 5, 5);
+        add(agentTable, c);
+
+        // THREAD Table
+        c.gridx = 0;
+        c.gridy++;
+        c.insets = new Insets(5, 5, 0, 5);
+        add(threadTable.getTableHeader(), c);
+
+        c.gridy++;
+        c.insets = new Insets(0, 5, 5, 5);
+        add(threadTable, c);
+
+      /*
+        c.fill = GridBagConstraints.NONE;
+
 
         // STARTED PRODUCERS
-        c.insets = new Insets(5, 5, 5, 5);
         c.gridx = 0;
         c.gridy++;
         add(pe, c);
@@ -92,7 +117,7 @@ public class StatisticsPanel extends JPanel{
         c.gridx++;
         modifyTextField(endTime, 50, 25);
         add (endTime, c);
-
+*/
 
     }
 
@@ -153,5 +178,21 @@ public class StatisticsPanel extends JPanel{
 
     public void setEndTime(JTextField endTime) {
         this.endTime = endTime;
+    }
+
+    public CustomTable getAgentTable() {
+        return agentTable;
+    }
+
+    public void setAgentTable(CustomTable agentTable) {
+        this.agentTable = agentTable;
+    }
+
+    public CustomTable getThreadTable() {
+        return threadTable;
+    }
+
+    public void setThreadTable(CustomTable threadTable) {
+        this.threadTable = threadTable;
     }
 }
