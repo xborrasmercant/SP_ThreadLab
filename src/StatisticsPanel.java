@@ -1,9 +1,12 @@
+import CustomUI.AgentsTable;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
 public class StatisticsPanel extends JPanel{
     private JTextField peCounter, ceCounter, pfCounter, cfCounter, startTime, endTime;
+    private AgentsTable agentsTable;
 
     public StatisticsPanel() {
         configurePanel();
@@ -28,6 +31,9 @@ public class StatisticsPanel extends JPanel{
         this.cfCounter = new JTextField("0");
         this.startTime = new JTextField("0");
         this.endTime = new JTextField("0");
+        agentsTable = new AgentsTable();
+
+        add(agentsTable);
 
         // STARTED PRODUCERS
         c.insets = new Insets(5, 5, 5, 5);

@@ -51,9 +51,9 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
     }
 
     private void configureJFrame(){
-        this.setLayout(new GridBagLayout());
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 600);
+        setLayout(new GridBagLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 600);
         setLocationRelativeTo(null);
     }
 
