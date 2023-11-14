@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Customizable producer and consumer Time through sliders">
+    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Total and Average times in Nanoseconds are now visible in StatisticsPanel for both Agent Creation and Thread Start().&#10;&#10;TODO: Fix threads not terminating immediately and reset after pressing Start button again.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LabModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LabView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StatisticsPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699984407372</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Total and Average times in Nanoseconds are now visible in StatisticsPanel for both Agent Creation and Thread Start().&#10;&#10;TODO: Fix threads not terminating immediately and reset after pressing Start button again.">
+      <option name="closed" value="true" />
+      <created>1699989548057</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699989548057</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -169,6 +177,7 @@
     <MESSAGE value="Updated Class Names" />
     <MESSAGE value="Customizable producer and consumer Amount" />
     <MESSAGE value="Customizable producer and consumer Time through sliders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Customizable producer and consumer Time through sliders" />
+    <MESSAGE value="Total and Average times in Nanoseconds are now visible in StatisticsPanel for both Agent Creation and Thread Start().&#10;&#10;TODO: Fix threads not terminating immediately and reset after pressing Start button again." />
+    <option name="LAST_COMMIT_MESSAGE" value="Total and Average times in Nanoseconds are now visible in StatisticsPanel for both Agent Creation and Thread Start().&#10;&#10;TODO: Fix threads not terminating immediately and reset after pressing Start button again." />
   </component>
 </project>

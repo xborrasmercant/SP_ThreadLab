@@ -73,6 +73,9 @@ public class LabView extends JFrame implements ActionListener, Runnable {
             statsPanel.getThreadTable().setValueAt((getAgentAvgTime() + " ns"),0, 2);
             statsPanel.getThreadTable().setValueAt((getLabModel().getThreadElapsedTime() + " ns"),1, 1);
             statsPanel.getThreadTable().setValueAt((getThreadAvgTime() + " ns"),1, 2);
+
+            // TOTAL ELAPSED TIME Updating
+            statsPanel.getElapsedTimeField().setText((getLabModel().getTotalElapsedTime() + " ms"));
         }
     }
 

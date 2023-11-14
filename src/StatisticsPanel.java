@@ -6,6 +6,7 @@ import java.awt.*;
 
 public class StatisticsPanel extends JPanel{
     private CustomTable agentTable, threadTable;
+    private JTextField elapsedTimeField;
 
     public StatisticsPanel() {
         configurePanel();
@@ -20,15 +21,19 @@ public class StatisticsPanel extends JPanel{
         // LABEL Creation
         JLabel agentsLabel = new JLabel("Agents Involved Table", SwingConstants.CENTER);
         JLabel threadsLabel = new JLabel("Thread Time Table", SwingConstants.CENTER);
+        JLabel elapsedTime = new JLabel("Total Elapsed Time", SwingConstants.CENTER);
+
 
         // COMPONENTS Initialization
         agentTable = new CustomTable("Agent");
         threadTable = new CustomTable("Thread");
+        elapsedTimeField = new JTextField("0 ms");
 
         // DEFAULT Config
         agentsLabel.setFont(tableTitleFont);
         threadsLabel.setFont(tableTitleFont);
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridwidth = 2;
 
 
         // AGENTS Table
@@ -57,12 +62,32 @@ public class StatisticsPanel extends JPanel{
         c.insets = new Insets(0, 5, 5, 5);
         add(threadTable, c);                                        //Table
 
+
+        // ELAPSED TOTAL TIME
+        c.gridx = 0;
+        c.gridy++;
+        c.gridwidth = 1;
+        c.insets = new Insets(5, 5, 5, 5);
+        add(elapsedTime, c);
+
+        c.gridx++;
+        add(elapsedTimeField, c);
+
+
     }
 
     public void configurePanel() {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
         setBorder(blackBorder);
         setLayout(new GridBagLayout());
+    }
+
+    public JTextField getElapsedTimeField() {
+        return elapsedTimeField;
+    }
+
+    public void setElapsedTimeField(JTextField elapsedTimeField) {
+        this.elapsedTimeField = elapsedTimeField;
     }
 
     public CustomTable getAgentTable() {

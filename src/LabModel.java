@@ -1,10 +1,11 @@
+import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class LabModel{
     private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
     private int producerAmount, consumerAmount, producerTime, consumerTime;
-    private long agentElapsedTime, threadElapsedTime;
+    private long agentElapsedTime, threadElapsedTime, totalElapsedTime;
 
     public LabModel(Product productCounter, Product peCounter, Product pfCounter, Product ceCounter, Product cfCounter) {
         this.productCounter = productCounter;
@@ -21,6 +22,7 @@ public class LabModel{
     public void play(){
         long threadStartTime = 0, threadEndTime = 0, agentNotCreatedTime = 0, agentCreatedTime = 0;
 
+        totalElapsedTime = System.currentTimeMillis();
         for (int i = 0; i < producerAmount; i++){
 
             Producer producer = new Producer(productCounter, peCounter, pfCounter, producerTime);
@@ -56,11 +58,21 @@ public class LabModel{
             threadElapsedTime = threadElapsedTime + (threadEndTime - threadStartTime);
         }
 
+        totalElapsedTime = System.currentTimeMillis() - totalElapsedTime;
+
         System.out.println("Agent Total Time: " + agentElapsedTime + " ns");
         System.out.println("Thread Total Time: " + threadElapsedTime + " ns");
 
         System.out.println("Agent Average Time: " + agentElapsedTime / (producerAmount + consumerAmount) + " ns");
         System.out.println("Thread Average Time: " + threadElapsedTime / (producerAmount + consumerAmount) + " ns");
+    }
+
+    public long getTotalElapsedTime() {
+        return totalElapsedTime;
+    }
+
+    public void setTotalElapsedTime(long totalElapsedTime) {
+        this.totalElapsedTime = totalElapsedTime;
     }
 
     public long getAgentElapsedTime() {
