@@ -1,12 +1,9 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 
 public class ProductorConsumidorView extends JFrame implements ActionListener, ItemListener, Runnable {
-    private JButton startButton;
-    private JTextField mainCounter;
+    private ProductPanel prodPanel;
     private ConfigurationPanel configPanel;
     private StatisticsPanel statsPanel;
 
@@ -21,35 +18,33 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
 
     private void addComponentsToPanel(Container panel){
         GridBagConstraints c = new GridBagConstraints();
-        Font font1 = new Font("SansSerif", Font.BOLD, 20);
 
-        startButton = new JButton("Play");
-        mainCounter = new JTextField("0");
+        // COMPONENTS Initialization
+        prodPanel = new ProductPanel();
         configPanel = new ConfigurationPanel();
         statsPanel = new StatisticsPanel();
 
-        startButton.addActionListener(this);
+        // ACTION LISTENERS Addition
+        prodPanel.getStartButton().addActionListener(this);
+
+        // DEFAULT Config
+        c.fill = GridBagConstraints.VERTICAL;
 
 
+        // PRODUCT Panel
         c.insets = new Insets(5, 5, 5, 5);
-        startButton.setPreferredSize(new Dimension(100,50));
-        startButton.setFont(font1);
+        c.gridwidth = 2;
         c.gridx = 0;
         c.gridy = 0;
-        panel.add(startButton, c);
+        panel.add(prodPanel, c);
 
-        mainCounter.setPreferredSize(new Dimension(100,50));
-        mainCounter.setFont(font1);
-        mainCounter.setHorizontalAlignment(JTextField.CENTER);
-        c.gridx++;
-        panel.add(mainCounter, c);
-
-        // CONFIG PANEL
+        // CONFIG Panel
+        c.gridwidth = 1;
         c.gridx = 0;
         c.gridy ++;
         panel.add(configPanel, c);
 
-        // STATS PANEL
+        // STATS Panel
         c.gridx ++;
         panel.add(statsPanel, c);
 
@@ -58,13 +53,13 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
     private void configureJFrame(){
         this.setLayout(new GridBagLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(500, 600);
+        this.setSize(600, 600);
         setLocationRelativeTo(null);
     }
 
     public void run() {
         while(true){
-            mainCounter.setText(String.valueOf(controller.getMainCounter().getValor()));
+            prodPanel.getProductCounter().setText(String.valueOf(controller.getProductCounter().getValor()));
             statsPanel.getPeCounter().setText(String.valueOf(controller.getPeCounter().getValor()));
             statsPanel.getPfCounter().setText(String.valueOf(controller.getPfCounter().getValor()));
             statsPanel.getCeCounter().setText(String.valueOf(controller.getCeCounter().getValor()));
@@ -77,12 +72,14 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
         switch (str) {
-            case "Play":
-                this.getMainCounter().setText("0");
+            case "Start":
+                System.out.println("ACTION - Start button pressed");
+
+                prodPanel.getProductCounter().setText("0");
                 controller.play();
                 break;
             default:
-                System.err.println("Acción NO tratada: " + e);
+                System.err.println("ACTION - Not treated action: " + e);
         }
     }
     @Override
@@ -98,21 +95,6 @@ public class ProductorConsumidorView extends JFrame implements ActionListener, I
         txtField.setHorizontalAlignment(JTextField.CENTER);
     }
 
-    public JButton getStartButton() {
-        return startButton;
-    }
-
-    public void setStartButton(JButton startButton) {
-        this.startButton = startButton;
-    }
-
-    public JTextField getMainCounter() {
-        return mainCounter;
-    }
-
-    public void setMainCounter(JTextField mainCounter) {
-        this.mainCounter = mainCounter;
-    }
 
     public ProductorConsumidorController getController() {
         return controller;

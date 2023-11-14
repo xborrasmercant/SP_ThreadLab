@@ -5,30 +5,55 @@ import java.awt.*;
 public class ConfigurationPanel extends JPanel {
     private JSlider producerTSlider, consumerTSlider;
     private JCheckBox producerRCheckbox, consumerRCheckbox;
-    private JTextField producerAmount, consumerAmount;
+    private JTextField producerQtyField, consumerQtyField;
 
     public ConfigurationPanel() {
         configurePanel();
         addComponentsToPanel();
-
     }
 
     public void addComponentsToPanel() {
         GridBagConstraints c = new GridBagConstraints();
 
-        // Label creation
-        JLabel producerRTime = new JLabel("Randomize producer time");
-        JLabel consumerRTime = new JLabel("Randomize consumer time");
-        JLabel producerALabel = new JLabel("Producer Amount");
-        JLabel consumerALabel = new JLabel("Consumer Amount");
+        // LABEL Creation
+        JLabel producerRTime = new JLabel("Randomize producer time", SwingConstants.CENTER);
+        JLabel consumerRTime = new JLabel("Randomize consumer time", SwingConstants.CENTER);
+        JLabel producerQtyLabel = new JLabel("Producer Amount", SwingConstants.CENTER);
+        JLabel consumerQtyLabel = new JLabel("Consumer Amount", SwingConstants.CENTER);
 
-        // Initialization of components
+        // COMPONENT Initialization
         this.producerTSlider = new JSlider(0,100);
         this.consumerTSlider = new JSlider(0,100);
         this.producerRCheckbox = new JCheckBox();
         this.consumerRCheckbox = new JCheckBox();
+        this.producerQtyField = new JTextField("100");
+        this.consumerQtyField = new JTextField("100");
 
-        // PRODUCERS Config
+        // DEFAULT Config
+        modifyTextField(producerQtyField, 50, 25);
+        modifyTextField(consumerQtyField, 50, 25);
+        c.insets = new Insets(2, 2, 2, 2);
+
+        // PRODUCER Amount
+        c.gridx = 0;
+        c.gridy = 0;
+        add(producerQtyLabel, c); // Label
+
+        c.gridy++;
+        add(producerQtyField, c); // TextField
+
+
+        // CONSUMER Amount
+        c.gridx++;
+        c.gridy = 0;
+        add(consumerQtyLabel, c); // Label
+
+        c.gridy++;
+        add(consumerQtyField, c); // TextField
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        // PRODUCER TIME Config
         c.gridx = 0;
         c.gridy++;
         add(producerRTime, c); // Label
@@ -44,7 +69,7 @@ public class ConfigurationPanel extends JPanel {
         c.gridwidth = 1;
 
 
-        // CONSUMERS Config
+        // CONSUMER TIME Config
         c.gridx = 0;
         c.gridy++;
         add(consumerRTime, c); // Label
@@ -65,6 +90,11 @@ public class ConfigurationPanel extends JPanel {
         Border blackBorder = BorderFactory.createLineBorder(Color.black);
         setBorder(blackBorder);
         setLayout(new GridBagLayout());
+    }
+
+    public void modifyTextField (JTextField txtField, int width, int height) {
+        txtField.setPreferredSize(new Dimension(width,height));
+        txtField.setHorizontalAlignment(JTextField.CENTER);
     }
 
     public JSlider getProducerTSlider() {

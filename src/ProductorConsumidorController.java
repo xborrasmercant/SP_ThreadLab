@@ -1,20 +1,17 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
-import java.awt.event.ItemListener;
 
 public class ProductorConsumidorController {
     private ProductorConsumidorModel model;
     private ProductorConsumidorView view;
-    private Counter mainCounter, peCounter, pfCounter, ceCounter, cfCounter;
+    private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
 
     public ProductorConsumidorController() {
-        this.mainCounter = new Counter();
-        this.peCounter = new Counter();
-        this.pfCounter = new Counter();
-        this.ceCounter = new Counter();
-        this.cfCounter = new Counter();
+        this.productCounter = new Product();
+        this.peCounter = new Product();
+        this.pfCounter = new Product();
+        this.ceCounter = new Product();
+        this.cfCounter = new Product();
 
-        this.model = new ProductorConsumidorModel(mainCounter, peCounter, pfCounter, ceCounter, cfCounter);
+        this.model = new ProductorConsumidorModel(productCounter, peCounter, pfCounter, ceCounter, cfCounter);
         this.view = new ProductorConsumidorView(this);
     }
 
@@ -26,8 +23,7 @@ public class ProductorConsumidorController {
     }
 
     public void play() {
-        this.mainCounter.setValor(0);
-
+        this.productCounter.setValor(0);
         this.model.play();
     }
 
@@ -47,24 +43,39 @@ public class ProductorConsumidorController {
         this.view = view;
     }
 
-    public Counter getMainCounter() {
-        return mainCounter;
+    public Product getProductCounter() {
+        return productCounter;
     }
 
-    public Counter getPeCounter() {
+    public Product getPeCounter() {
         return peCounter;
     }
 
-    public Counter getPfCounter() {
+    public void setPeCounter(Product peCounter) {
+        this.peCounter = peCounter;
+    }
+
+    public Product getPfCounter() {
         return pfCounter;
     }
 
-    public Counter getCeCounter() {
+    public void setPfCounter(Product pfCounter) {
+        this.pfCounter = pfCounter;
+    }
+
+    public Product getCeCounter() {
         return ceCounter;
     }
 
-    public Counter getCfCounter() {
+    public void setCeCounter(Product ceCounter) {
+        this.ceCounter = ceCounter;
+    }
+
+    public Product getCfCounter() {
         return cfCounter;
     }
 
+    public void setCfCounter(Product cfCounter) {
+        this.cfCounter = cfCounter;
+    }
 }

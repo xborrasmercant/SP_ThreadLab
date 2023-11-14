@@ -1,21 +1,21 @@
 import java.util.Random;
 
 public class Consumidor implements Runnable{
-    private Counter mainCounter;
-    private Counter ceCounter;
-    private Counter cfCounter;
+    private Product productCounter;
+    private Product ceCounter;
+    private Product cfCounter;
 
-    public Consumidor(Counter mainCounter, Counter ceCounter, Counter cfCounter) {
-        this.mainCounter = mainCounter;
+    public Consumidor(Product productCounter, Product ceCounter, Product cfCounter) {
+        this.productCounter = productCounter;
         this.ceCounter = ceCounter;
         this.cfCounter = cfCounter;
     }
 
     public void run() {
-        ceCounter.inc();
+        ceCounter.produce();
 
         for (int i = 0; i < 100; i++){
-            this.mainCounter.desc();
+            this.productCounter.consume();
             try {
                 Random rand = new Random();
                 int sleepTime = rand.nextInt(100);
@@ -25,6 +25,6 @@ public class Consumidor implements Runnable{
             }
         }
 
-        cfCounter.inc();
+        cfCounter.produce();
     }
 }

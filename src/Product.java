@@ -1,15 +1,15 @@
-public class Counter {
+public class Product {
     private int valor;
 
-    public Counter() {
+    public Product() {
         this.valor = 0;
     }
 
-    synchronized void inc() {
+    synchronized void produce() {
         this.valor++;
     }
 
-    synchronized void desc() {
+    synchronized void consume() {
         this.valor--;
     }
 

@@ -13,7 +13,7 @@ public class StatisticsPanel extends JPanel{
     public void addComponentsToPanel() {
         GridBagConstraints c = new GridBagConstraints();
 
-        // Label creation
+        // LABEL Creation
         JLabel pe = new JLabel("Productores empezados:");
         JLabel ce = new JLabel("Consumidores empezados:");
         JLabel pf = new JLabel("Productores finalizados:");
@@ -21,7 +21,7 @@ public class StatisticsPanel extends JPanel{
         JLabel start = new JLabel("Started:");
         JLabel end = new JLabel("Ended:");
 
-        // Initialization of components
+        // COMPONENTS Initialization
         this.peCounter = new JTextField("0");
         this.ceCounter = new JTextField("0");
         this.pfCounter = new JTextField("0");
@@ -29,7 +29,8 @@ public class StatisticsPanel extends JPanel{
         this.startTime = new JTextField("0");
         this.endTime = new JTextField("0");
 
-        // PRODUCTORES EMPEZADOS
+        // STARTED PRODUCERS
+        c.insets = new Insets(5, 5, 5, 5);
         c.gridx = 0;
         c.gridy++;
         add(pe, c);
@@ -38,7 +39,7 @@ public class StatisticsPanel extends JPanel{
         modifyTextField(peCounter, 50, 25);
         add (peCounter, c);
 
-        // CONSUMIDORES EMPEZADOS
+        // STARTED CONSUMERS
         c.gridx = 0;
         c.gridy++;
         add(ce, c);
@@ -47,7 +48,7 @@ public class StatisticsPanel extends JPanel{
         modifyTextField(ceCounter, 50, 25);
         add (ceCounter, c);
 
-        // PRODUCTORES FINALIZADOS
+        // ENDED PRODUCERS
         c.gridx = 0;
         c.gridy++;
         add(pf, c);
@@ -57,7 +58,7 @@ public class StatisticsPanel extends JPanel{
         add (pfCounter, c);
 
 
-        // PRODUCTORES FINALIZADOS
+        // ENDED CONSUMERS
         c.gridx = 0;
         c.gridy++;
         add(cf, c);
@@ -67,8 +68,7 @@ public class StatisticsPanel extends JPanel{
         add (cfCounter, c);
 
 
-        // START
-
+        // START Time
         c.gridx = 0;
         c.gridy++;
         add(start, c);
@@ -78,7 +78,7 @@ public class StatisticsPanel extends JPanel{
         add (startTime, c);
 
 
-        // END
+        // END Time
         c.gridx = 0;
         c.gridy++;
         add(end, c);

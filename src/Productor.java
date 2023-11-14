@@ -1,22 +1,21 @@
 import java.util.Random;
 
 public class Productor implements Runnable{
+    private Product productCounter;
+    private Product peCounter;
+    private Product pfCounter;
 
-    private Counter mainCounter;
-    private Counter peCounter;
-    private Counter pfCounter;
-
-    public Productor(Counter mainCounter, Counter peCounter, Counter pfCounter) {
-        this.mainCounter = mainCounter;
-        this.peCounter = peCounter;
-        this.pfCounter = pfCounter;
+    public Productor(Product productCounter, Product peProduct, Product pfProduct) {
+        this.productCounter = productCounter;
+        this.peCounter = peProduct;
+        this.pfCounter = pfProduct;
     }
 
     public void run() {
-        peCounter.inc();
+        peCounter.produce();
 
         for (int i = 0; i < 100; i++){
-            mainCounter.inc();
+            productCounter.produce();
 
             try {
                 Random rand = new Random();
@@ -27,6 +26,6 @@ public class Productor implements Runnable{
             }
         }
 
-        pfCounter.inc();
+        pfCounter.produce();
     }
 }
