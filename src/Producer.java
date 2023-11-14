@@ -4,7 +4,6 @@ public class Producer implements Runnable{
     private Product productCounter;
     private Product peCounter;
     private Product pfCounter;
-    private int producerAmount;
 
     public Producer(Product productCounter, Product peProduct, Product pfProduct) {
         this.productCounter = productCounter;

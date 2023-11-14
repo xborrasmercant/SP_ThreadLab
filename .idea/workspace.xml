@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Updated AgentsTable to CustomTable (now includes AgentTable and ThreadTable)">
+    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Updated Class Names">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Consumidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Productor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Producer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductorConsumidorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductorConsumidorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductorConsumidorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StatisticsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConfigurationPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConfigurationPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LabModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LabView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Producer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699981418086</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updated Class Names">
+      <option name="closed" value="true" />
+      <created>1699982542175</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699982542175</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -145,6 +151,7 @@
     <MESSAGE value="Updated Menu Layout (new Panel -&gt; ProductPanel) and added two new fields: producerQtyField and consumerQtyField (fix the quantity of producers and consumers)" />
     <MESSAGE value="Added AgentsTable, which consists in a JTable that substitutes the previous Statistics Started/Ended JTextFields" />
     <MESSAGE value="Updated AgentsTable to CustomTable (now includes AgentTable and ThreadTable)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated AgentsTable to CustomTable (now includes AgentTable and ThreadTable)" />
+    <MESSAGE value="Updated Class Names" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Class Names" />
   </component>
 </project>

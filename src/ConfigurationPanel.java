@@ -128,4 +128,20 @@ public class ConfigurationPanel extends JPanel {
     public void setConsumerRCheckbox(JCheckBox consumerRCheckbox) {
         this.consumerRCheckbox = consumerRCheckbox;
     }
+
+    public JTextField getProducerQtyField() {
+        return producerQtyField;
+    }
+
+    public void setProducerQtyField(JTextField producerQtyField) {
+        this.producerQtyField = producerQtyField;
+    }
+
+    public JTextField getConsumerQtyField() {
+        return consumerQtyField;
+    }
+
+    public void setConsumerQtyField(JTextField consumerQtyField) {
+        this.consumerQtyField = consumerQtyField;
+    }
 }

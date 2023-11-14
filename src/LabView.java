@@ -76,6 +76,12 @@ public class LabView extends JFrame implements ActionListener, ItemListener, Run
             case "Start":
                 System.out.println("ACTION - Start button pressed");
 
+                int producerAmount = Integer.parseInt(configPanel.getProducerQtyField().getText());
+                int consumerAmount = Integer.parseInt(configPanel.getConsumerQtyField().getText());
+
+                controller.getModel().setProducerAmount(producerAmount);
+                controller.getModel().setConsumerAmount(consumerAmount);
+
                 prodPanel.getProductCounter().setText("0");
                 controller.play();
                 break;
