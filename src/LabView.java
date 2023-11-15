@@ -69,9 +69,9 @@ public class LabView extends JFrame implements ActionListener, Runnable {
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCfCounter().getStockValue()),1, 2);
 
             // THREAD TABLE Updating
-            statsPanel.getThreadTable().setValueAt((getLabModel().getAgentElapsedTime() + " ns"),0, 1);
+            statsPanel.getThreadTable().setValueAt((getLabModel().getTotalThreadsCreationTime() + " ns"),0, 1);
             statsPanel.getThreadTable().setValueAt((getAgentAvgTime() + " ns"),0, 2);
-            statsPanel.getThreadTable().setValueAt((getLabModel().getThreadElapsedTime() + " ns"),1, 1);
+            statsPanel.getThreadTable().setValueAt((getLabModel().getTotalThreadsStartingTime() + " ns"),1, 1);
             statsPanel.getThreadTable().setValueAt((getThreadAvgTime() + " ns"),1, 2);
 
             // TOTAL ELAPSED TIME Updating
@@ -86,10 +86,12 @@ public class LabView extends JFrame implements ActionListener, Runnable {
             case "Start":
 
                 System.out.println("ACTION - Start Button Pressed");
-                int producerAmount, consumerAmount, producerTime, consumerTime;
+                int producerAmount, consumerAmount, producerProductionAmount, consumerProductionAmount, producerTime, consumerTime;
 
-                producerAmount = Integer.parseInt(configPanel.getProducerQtyField().getText());
-                consumerAmount = Integer.parseInt(configPanel.getConsumerQtyField().getText());
+                producerAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(0, 1));
+                consumerAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(1, 1));
+                producerProductionAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(0, 2));
+                consumerProductionAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(1, 2));
 
                 // Randomization CheckBoxes
                 if (configPanel.getProducerRCheckbox().isSelected()) {
@@ -106,9 +108,12 @@ public class LabView extends JFrame implements ActionListener, Runnable {
                     consumerTime = configPanel.getConsumerTSlider().getValue();
                 }
 
+
                 // Setting Final Values
                 controller.getModel().setProducerAmount(producerAmount);
                 controller.getModel().setConsumerAmount(consumerAmount);
+                controller.getModel().setProducerProductionAmount(producerProductionAmount);
+                controller.getModel().setConsumerProductionAmount(consumerProductionAmount);
                 controller.getModel().setProducerTime(producerTime);
                 controller.getModel().setConsumerTime(consumerTime);
 
@@ -116,8 +121,8 @@ public class LabView extends JFrame implements ActionListener, Runnable {
 
                 System.out.println("Producer Amount: " + producerAmount + " | Consumer Amount: " + consumerAmount);
                 System.out.println("Producer Time: " + producerTime + " ms | Consumer Time: " + consumerTime + " ms");
-                System.out.println("Created Total Time: " + getLabModel().getAgentElapsedTime() + " ns |" + " Created Average Time: " + getAgentAvgTime() + " ns");
-                System.out.println("Started Total Time: " + getLabModel().getThreadElapsedTime() + " ns |" + " Started Average Time: " + getThreadAvgTime() + " ns");
+                System.out.println("Created Total Time: " + getLabModel().getTotalThreadsCreationTime() + " ns |" + " Created Average Time: " + getAgentAvgTime() + " ns");
+                System.out.println("Started Total Time: " + getLabModel().getTotalThreadsStartingTime() + " ns |" + " Started Average Time: " + getThreadAvgTime() + " ns");
                 System.out.println("Total Elapsed Time: " + getLabModel().getTotalElapsedTime() + " ms");
                 System.out.println("=============================================");
                 break;
@@ -131,11 +136,11 @@ public class LabView extends JFrame implements ActionListener, Runnable {
     }
 
     public long getAgentAvgTime() {
-        return getLabModel().getAgentElapsedTime() / (getLabModel().getProducerAmount() + getLabModel().getConsumerAmount());
+        return getLabModel().getTotalThreadsCreationTime() / (getLabModel().getProducerAmount() + getLabModel().getConsumerAmount());
     }
 
     public long getThreadAvgTime() {
-        return getLabModel().getThreadElapsedTime() / (getLabModel().getProducerAmount() + getLabModel().getConsumerAmount());
+        return getLabModel().getTotalThreadsStartingTime() / (getLabModel().getProducerAmount() + getLabModel().getConsumerAmount());
     }
 
     public ProductPanel getProdPanel() {

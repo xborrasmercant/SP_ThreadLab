@@ -33,8 +33,8 @@ public class LabController {
         ceCounter.setStockValue(0);
         pfCounter.setStockValue(0);
         cfCounter.setStockValue(0);
-        model.setAgentElapsedTime(0);
-        model.setThreadElapsedTime(0);
+        model.setTotalThreadsCreationTime(0);
+        model.setTotalThreadsStartingTime(0);
     }
 
 

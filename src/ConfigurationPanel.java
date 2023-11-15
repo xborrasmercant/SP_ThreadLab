@@ -1,3 +1,5 @@
+import CustomUI.CustomTable;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -5,7 +7,7 @@ import java.awt.*;
 public class ConfigurationPanel extends JPanel {
     private JSlider producerTSlider, consumerTSlider;
     private JCheckBox producerRCheckbox, consumerRCheckbox;
-    private JTextField producerQtyField, consumerQtyField;
+    private CustomTable amountsTable;
 
     public ConfigurationPanel() {
         configurePanel();
@@ -14,47 +16,48 @@ public class ConfigurationPanel extends JPanel {
 
     public void addComponentsToPanel() {
         GridBagConstraints c = new GridBagConstraints();
+        Font tableTitleFont = new Font("SansSerif", Font.BOLD, 16);
 
         // LABEL Creation
         JLabel producerRTime = new JLabel("Randomize producer time", SwingConstants.CENTER);
         JLabel consumerRTime = new JLabel("Randomize consumer time", SwingConstants.CENTER);
         JLabel producerQtyLabel = new JLabel("Producer Amount", SwingConstants.CENTER);
         JLabel consumerQtyLabel = new JLabel("Consumer Amount", SwingConstants.CENTER);
+        JLabel amountsLabel = new JLabel("Agents and Product Amounts", SwingConstants.CENTER);
+
 
         // COMPONENT Initialization
-        this.producerTSlider = new JSlider(1,100);
-        this.consumerTSlider = new JSlider(1,100);
-        this.producerRCheckbox = new JCheckBox();
-        this.consumerRCheckbox = new JCheckBox();
-        this.producerQtyField = new JTextField("100");
-        this.consumerQtyField = new JTextField("100");
+        producerTSlider = new JSlider(1,100);
+        consumerTSlider = new JSlider(1,100);
+        producerRCheckbox = new JCheckBox();
+        consumerRCheckbox = new JCheckBox();
+        amountsTable = new CustomTable("Amounts");
+
 
         // DEFAULT Config
-        modifyTextField(producerQtyField, 50, 25);
-        modifyTextField(consumerQtyField, 50, 25);
-        c.insets = new Insets(2, 2, 2, 2);
+        amountsLabel.setFont(tableTitleFont);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridwidth = 2;
 
-        // PRODUCER Amount
+        // AMOUNTS Table
         c.gridx = 0;
         c.gridy = 0;
-        add(producerQtyLabel, c);                           // Label
+        c.insets = new Insets(5, 5, 0, 5);
+        add(amountsLabel, c);                                         // Label
 
         c.gridy++;
-        add(producerQtyField, c);                           // TextField
-
-        // CONSUMER Amount
-        c.gridx++;
-        c.gridy = 0;
-        add(consumerQtyLabel, c);                           // Label
+        add(amountsTable.getTableHeader(), c);                        // Header
 
         c.gridy++;
-        add(consumerQtyField, c);                           // TextField
+        c.insets = new Insets(0, 5, 5, 5);
+        add(amountsTable, c);                                         // Table
 
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(2, 2, 2, 2);
 
         // PRODUCER TIME Config
         c.gridx = 0;
         c.gridy++;
+        c.gridwidth = 1;
         add(producerRTime, c);                              // Label
 
         c.gridx++;
@@ -128,19 +131,11 @@ public class ConfigurationPanel extends JPanel {
         this.consumerRCheckbox = consumerRCheckbox;
     }
 
-    public JTextField getProducerQtyField() {
-        return producerQtyField;
+    public CustomTable getAmountsTable() {
+        return amountsTable;
     }
 
-    public void setProducerQtyField(JTextField producerQtyField) {
-        this.producerQtyField = producerQtyField;
-    }
-
-    public JTextField getConsumerQtyField() {
-        return consumerQtyField;
-    }
-
-    public void setConsumerQtyField(JTextField consumerQtyField) {
-        this.consumerQtyField = consumerQtyField;
+    public void setAmountsTable(CustomTable amountsTable) {
+        this.amountsTable = amountsTable;
     }
 }

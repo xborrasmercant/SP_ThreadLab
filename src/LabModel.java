@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class LabModel{
     private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
-    private int producerAmount, consumerAmount, producerTime, consumerTime;
-    private long agentElapsedTime, threadElapsedTime, totalElapsedTime;
+    private int producerAmount, consumerAmount, producerProductionAmount, consumerProductionAmount, producerTime, consumerTime;
+    private long totalThreadsCreationTime, totalThreadsStartingTime, totalElapsedTime;
 
     public LabModel(Product productCounter, Product peCounter, Product pfCounter, Product ceCounter, Product cfCounter) {
         this.productCounter = productCounter;
@@ -17,50 +17,69 @@ public class LabModel{
         this.consumerAmount = 100;
         this.producerTime = 50;
         this.consumerTime = 50;
+        this.producerProductionAmount = 100;
+        this.consumerProductionAmount = 100;
     }
 
     public void play(){
-        long threadStartTime = 0, threadEndTime = 0, agentNotCreatedTime = 0, agentCreatedTime = 0;
+        long threadCreationTime, threadStartingTime;
 
         totalElapsedTime = System.currentTimeMillis();
         for (int i = 0; i < producerAmount; i++){
-
-            Producer producer = new Producer(productCounter, peCounter, pfCounter, producerTime);
+            Producer producer = new Producer(productCounter, peCounter, pfCounter, producerTime, producerProductionAmount);
 
             // AGENT Creation
-            agentNotCreatedTime = System.nanoTime();
+            threadCreationTime = System.nanoTime();
             Thread productionThread = new Thread(producer);
-            agentCreatedTime = System.nanoTime();
+            threadCreationTime = System.nanoTime() - threadCreationTime;
 
             // THREAD Starting
-            threadStartTime = System.nanoTime();
+            threadStartingTime = System.nanoTime();
             productionThread.start();
-            threadEndTime = System.nanoTime();
+            threadStartingTime = System.nanoTime() - threadStartingTime;
 
-            agentElapsedTime = agentElapsedTime + (agentCreatedTime - agentNotCreatedTime);
-            threadElapsedTime = threadElapsedTime + (threadEndTime - threadStartTime);
+            // Thread and Creation times added to the Total
+            totalThreadsCreationTime = totalThreadsCreationTime + threadCreationTime;
+            totalThreadsStartingTime = totalThreadsStartingTime + threadStartingTime;
         }
 
         for (int i = 0; i < consumerAmount; i++){
-            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter, consumerTime);
+            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter, consumerTime, consumerProductionAmount);
 
             // AGENT Creation
-            agentNotCreatedTime = System.nanoTime();
+            threadCreationTime = System.nanoTime();
             Thread consumerThread = new Thread(consumer);
-            agentCreatedTime = System.nanoTime();
+            threadCreationTime = System.nanoTime() - threadCreationTime;
 
             // THREAD Starting
-            threadStartTime = System.nanoTime();
+            threadStartingTime = System.nanoTime();
             consumerThread.start();
-            threadEndTime = System.nanoTime();
+            threadStartingTime = System.nanoTime() - threadStartingTime;
 
-            agentElapsedTime = agentElapsedTime + (agentCreatedTime - agentNotCreatedTime);
-            threadElapsedTime = threadElapsedTime + (threadEndTime - threadStartTime);
+            // Thread and Creation times added to the Total
+            totalThreadsCreationTime = totalThreadsCreationTime + threadCreationTime;
+            totalThreadsStartingTime = totalThreadsStartingTime + threadStartingTime;
         }
 
         totalElapsedTime = System.currentTimeMillis() - totalElapsedTime;
     }
 
+
+    public int getProducerProductionAmount() {
+        return producerProductionAmount;
+    }
+
+    public void setProducerProductionAmount(int producerProductionAmount) {
+        this.producerProductionAmount = producerProductionAmount;
+    }
+
+    public int getConsumerProductionAmount() {
+        return consumerProductionAmount;
+    }
+
+    public void setConsumerProductionAmount(int consumerProductionAmount) {
+        this.consumerProductionAmount = consumerProductionAmount;
+    }
 
     public long getTotalElapsedTime() {
         return totalElapsedTime;
@@ -70,20 +89,20 @@ public class LabModel{
         this.totalElapsedTime = totalElapsedTime;
     }
 
-    public long getAgentElapsedTime() {
-        return agentElapsedTime;
+    public long getTotalThreadsCreationTime() {
+        return totalThreadsCreationTime;
     }
 
-    public void setAgentElapsedTime(long agentElapsedTime) {
-        this.agentElapsedTime = agentElapsedTime;
+    public void setTotalThreadsCreationTime(long totalThreadsCreationTime) {
+        this.totalThreadsCreationTime = totalThreadsCreationTime;
     }
 
-    public long getThreadElapsedTime() {
-        return threadElapsedTime;
+    public long getTotalThreadsStartingTime() {
+        return totalThreadsStartingTime;
     }
 
-    public void setThreadElapsedTime(long threadElapsedTime) {
-        this.threadElapsedTime = threadElapsedTime;
+    public void setTotalThreadsStartingTime(long totalThreadsStartingTime) {
+        this.totalThreadsStartingTime = totalThreadsStartingTime;
     }
 
     public Product getProductCounter() {

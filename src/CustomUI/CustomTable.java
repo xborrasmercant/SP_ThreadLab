@@ -10,12 +10,14 @@ public class CustomTable extends JTable {
             createAgentTableStructure();
         } else if (tableType.equals("Thread")) {
             createThreadTableStructure();
+        } else if (tableType.equals("Amounts")) {
+            createAmountsTableStructure();
         }
     }
 
     public void createAgentTableStructure () {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Agent");
+        model.addColumn("Agent Type");
         model.addColumn("Started");
         model.addColumn("Terminated");
 
@@ -36,4 +38,17 @@ public class CustomTable extends JTable {
 
         setModel(model);
     }
+
+    public void createAmountsTableStructure () {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Agent Type");
+        model.addColumn("Agents Qty");
+        model.addColumn("Product Qty");
+
+        model.addRow(new Object[]{"Producer", "200", "100"});
+        model.addRow(new Object[]{"Consumer", "400", "100"});
+
+        setModel(model);
+    }
+
 }
