@@ -27,6 +27,7 @@ public class LabView extends JFrame implements ActionListener, Runnable {
 
         // ACTION LISTENERS Addition
         prodPanel.getStartButton().addActionListener(this);
+        prodPanel.getRestart_Button().addActionListener(this);
 
         // DEFAULT Config
         c.fill = GridBagConstraints.VERTICAL;
@@ -53,7 +54,7 @@ public class LabView extends JFrame implements ActionListener, Runnable {
     private void configureJFrame(){
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 600);
+        setSize(800, 600);
         setLocationRelativeTo(null);
     }
 
@@ -82,9 +83,9 @@ public class LabView extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
+
         switch (str) {
             case "Start":
-
                 System.out.println("ACTION - Start Button Pressed");
                 int producerAmount, consumerAmount, producerProductionAmount, consumerProductionAmount, producerTime, consumerTime;
 
@@ -108,7 +109,6 @@ public class LabView extends JFrame implements ActionListener, Runnable {
                     consumerTime = configPanel.getConsumerTSlider().getValue();
                 }
 
-
                 // Setting Final Values
                 controller.getModel().setProducerAmount(producerAmount);
                 controller.getModel().setConsumerAmount(consumerAmount);
@@ -125,6 +125,12 @@ public class LabView extends JFrame implements ActionListener, Runnable {
                 System.out.println("Started Total Time: " + getLabModel().getTotalThreadsStartingTime() + " ns |" + " Started Average Time: " + getThreadAvgTime() + " ns");
                 System.out.println("Total Elapsed Time: " + getLabModel().getTotalElapsedTime() + " ms");
                 System.out.println("=============================================");
+                break;
+            case "Restart":
+                // Counters are reset
+                controller.resetCounters();
+                System.out.println("ACTION - ThreadLab has been reset.");
+
                 break;
             default:
                 System.err.println("ACTION - Not treated action: " + e);

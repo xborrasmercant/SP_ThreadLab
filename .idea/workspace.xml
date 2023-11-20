@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Retweaked some variable names and console prints.">
+    <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Updated GUI with new options and statistics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConfigurationPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConfigurationPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Consumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomUI/CustomTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomUI/CustomTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LabModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LabView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699992712820</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Selectable producer, consumer amount and production amount for both agents">
+      <option name="closed" value="true" />
+      <created>1700074344557</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1700074344557</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -200,6 +205,8 @@
     <MESSAGE value="Total and Average times in Nanoseconds are now visible in StatisticsPanel for both Agent Creation and Thread Start().&#10;&#10;TODO: Fix threads not terminating immediately and reset after pressing Start button again." />
     <MESSAGE value="Almost finished version" />
     <MESSAGE value="Retweaked some variable names and console prints." />
-    <option name="LAST_COMMIT_MESSAGE" value="Retweaked some variable names and console prints." />
+    <MESSAGE value="Selectable producer, consumer amount and production amount for both agents" />
+    <MESSAGE value="Updated GUI with new options and statistics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated GUI with new options and statistics" />
   </component>
 </project>

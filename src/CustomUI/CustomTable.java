@@ -20,9 +20,12 @@ public class CustomTable extends JTable {
         model.addColumn("Agent Type");
         model.addColumn("Started");
         model.addColumn("Terminated");
+        model.addColumn("Processing");
+        model.addColumn("Items");
 
-        model.addRow(new Object[]{"Producer", "0", "0"});
-        model.addRow(new Object[]{"Consumer", "0", "0"});
+
+        model.addRow(new Object[]{"Producer", "0", "0", "0", "0"});
+        model.addRow(new Object[]{"Consumer", "0", "0", "0", "0"});
 
         setModel(model);
     }

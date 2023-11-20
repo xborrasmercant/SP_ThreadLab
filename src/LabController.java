@@ -23,7 +23,6 @@ public class LabController {
     }
 
     public void play() {
-        resetCounters();
         model.play();
     }
 
