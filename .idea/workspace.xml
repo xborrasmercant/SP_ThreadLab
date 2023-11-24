@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Updated GUI with new options and statistics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomUI/CustomTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomUI/CustomTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LabView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThreadsLab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ThreadLab.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700074344557</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated GUI with new options and statistics">
+      <option name="closed" value="true" />
+      <created>1700496334485</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1700496334485</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

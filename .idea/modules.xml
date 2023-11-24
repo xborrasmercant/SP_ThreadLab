@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ThreadsTask.iml" filepath="$PROJECT_DIR$/ThreadsTask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThreadLab.iml" filepath="$PROJECT_DIR$/ThreadLab.iml" />
     </modules>
   </component>
 </project>
