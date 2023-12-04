@@ -59,7 +59,10 @@ public class LabView extends JFrame implements ActionListener, Runnable {
     }
 
     public void run() {
+
         while(true){
+
+
             // PRODUCT Updating
             prodPanel.getProductStockField().setText(String.valueOf(controller.getProductStock().getStockValue()));
 
@@ -68,6 +71,8 @@ public class LabView extends JFrame implements ActionListener, Runnable {
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPfCounter().getStockValue()),0, 2);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCeCounter().getStockValue()),1, 1);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCfCounter().getStockValue()),1, 2);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getModel().getItemsProduced()),0, 4);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getModel().getItemsConsumed()),1, 4);
 
             // THREAD TABLE Updating
             statsPanel.getThreadTable().setValueAt((getLabModel().getTotalThreadsCreationTime() + " ns"),0, 1);
@@ -83,17 +88,16 @@ public class LabView extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
-        boolean sync = true;
 
         switch (str) {
             case "Start":
                 System.out.println("ACTION - Start Button Pressed");
-                int producerAmount, consumerAmount, producerProductionAmount, consumerProductionAmount, producerTime, consumerTime;
+                int producerAmount, consumerAmount, producerProductionAmount, consumerConsumptionAmount, producerTime, consumerTime;
 
                 producerAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(0, 1));
                 consumerAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(1, 1));
                 producerProductionAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(0, 2));
-                consumerProductionAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(1, 2));
+                consumerConsumptionAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(1, 2));
 
 
                 // Randomization CheckBoxes
@@ -114,10 +118,10 @@ public class LabView extends JFrame implements ActionListener, Runnable {
 
                 // Synchronized CheckBox
                 if (prodPanel.getSynchronizeThreads_CB().isSelected()) {
-                    sync = false;
+                    controller.getModel().setSync(true);
                 }
                 else {
-                    sync = true;
+                    controller.getModel().setSync(false);
                 }
 
 
@@ -125,7 +129,7 @@ public class LabView extends JFrame implements ActionListener, Runnable {
                 controller.getModel().setProducerAmount(producerAmount);
                 controller.getModel().setConsumerAmount(consumerAmount);
                 controller.getModel().setProducerProductionAmount(producerProductionAmount);
-                controller.getModel().setConsumerProductionAmount(consumerProductionAmount);
+                controller.getModel().setConsumerConsumptionAmount(consumerConsumptionAmount);
                 controller.getModel().setProducerTime(producerTime);
                 controller.getModel().setConsumerTime(consumerTime);
 

@@ -24,6 +24,7 @@ public class Producer implements Runnable{
             for (int i = 0; i < productionAmount; i++) {
                 productStock.produce_syncro();
 
+
                 try {
                     Random rand = new Random();
                     int sleepTime = rand.nextInt(producerTime);

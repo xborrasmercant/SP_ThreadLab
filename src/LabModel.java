@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class LabModel{
     private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
-    private int producerAmount, consumerAmount, producerProductionAmount, consumerProductionAmount, producerTime, consumerTime;
+    private int producerAmount, consumerAmount, producerProductionAmount, consumerConsumptionAmount, producerTime, consumerTime, itemsProduced, itemsConsumed;
     private long totalThreadsCreationTime, totalThreadsStartingTime, totalElapsedTime;
+    private boolean sync;
 
     public LabModel(Product productCounter, Product peCounter, Product pfCounter, Product ceCounter, Product cfCounter) {
         this.productCounter = productCounter;
@@ -18,7 +19,8 @@ public class LabModel{
         this.producerTime = 50;
         this.consumerTime = 50;
         this.producerProductionAmount = 100;
-        this.consumerProductionAmount = 100;
+        this.consumerConsumptionAmount = 100;
+        this.sync = true;
     }
 
     public void play(){
@@ -26,7 +28,7 @@ public class LabModel{
 
         totalElapsedTime = System.currentTimeMillis();
         for (int i = 0; i < producerAmount; i++){
-            Producer producer = new Producer(productCounter, peCounter, pfCounter, producerTime, producerProductionAmount);
+            Producer producer = new Producer(productCounter, peCounter, pfCounter, producerTime, producerProductionAmount, sync);
 
             // AGENT Creation
             threadCreationTime = System.nanoTime();
@@ -38,13 +40,15 @@ public class LabModel{
             productionThread.start();
             threadStartingTime = System.nanoTime() - threadStartingTime;
 
+            itemsProduced = itemsProduced + producerProductionAmount;
+
             // Thread and Creation times added to the Total
             totalThreadsCreationTime = totalThreadsCreationTime + threadCreationTime;
             totalThreadsStartingTime = totalThreadsStartingTime + threadStartingTime;
         }
 
         for (int i = 0; i < consumerAmount; i++){
-            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter, consumerTime, consumerProductionAmount);
+            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter, consumerTime, consumerConsumptionAmount, sync);
 
             // AGENT Creation
             threadCreationTime = System.nanoTime();
@@ -55,6 +59,8 @@ public class LabModel{
             threadStartingTime = System.nanoTime();
             consumerThread.start();
             threadStartingTime = System.nanoTime() - threadStartingTime;
+
+            itemsConsumed = itemsConsumed + consumerConsumptionAmount;
 
             // Thread and Creation times added to the Total
             totalThreadsCreationTime = totalThreadsCreationTime + threadCreationTime;
@@ -73,12 +79,12 @@ public class LabModel{
         this.producerProductionAmount = producerProductionAmount;
     }
 
-    public int getConsumerProductionAmount() {
-        return consumerProductionAmount;
+    public int getConsumerConsumptionAmount() {
+        return consumerConsumptionAmount;
     }
 
-    public void setConsumerProductionAmount(int consumerProductionAmount) {
-        this.consumerProductionAmount = consumerProductionAmount;
+    public void setConsumerConsumptionAmount(int consumerConsumptionAmount) {
+        this.consumerConsumptionAmount = consumerConsumptionAmount;
     }
 
     public long getTotalElapsedTime() {
@@ -176,4 +182,29 @@ public class LabModel{
     public void setConsumerTime(int consumerTime) {
         this.consumerTime = consumerTime;
     }
+
+    public boolean isSync() {
+        return sync;
+    }
+
+    public void setSync(boolean sync) {
+        this.sync = sync;
+    }
+
+    public int getItemsProduced() {
+        return itemsProduced;
+    }
+
+    public void setItemsProduced(int itemsProduced) {
+        this.itemsProduced = itemsProduced;
+    }
+
+    public int getItemsConsumed() {
+        return itemsConsumed;
+    }
+
+    public void setItemsConsumed(int itemsConsumed) {
+        this.itemsConsumed = itemsConsumed;
+    }
 }
+
