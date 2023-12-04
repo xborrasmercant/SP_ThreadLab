@@ -5,11 +5,19 @@ public class Product {
         this.stockValue = 0;
     }
 
-    synchronized void produce() {
+    public void produce() {
         this.stockValue++;
     }
 
-    synchronized void consume() {
+    public void consume() {
+        this.stockValue--;
+    }
+
+    synchronized void produce_syncro() {
+        this.stockValue++;
+    }
+
+    synchronized void consume_syncro() {
         this.stockValue--;
     }
 

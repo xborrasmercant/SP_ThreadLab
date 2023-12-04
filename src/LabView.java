@@ -83,6 +83,7 @@ public class LabView extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
+        boolean sync = true;
 
         switch (str) {
             case "Start":
@@ -93,6 +94,7 @@ public class LabView extends JFrame implements ActionListener, Runnable {
                 consumerAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(1, 1));
                 producerProductionAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(0, 2));
                 consumerProductionAmount = Integer.parseInt((String) getConfigPanel().getAmountsTable().getValueAt(1, 2));
+
 
                 // Randomization CheckBoxes
                 if (configPanel.getProducerRCheckbox().isSelected()) {
@@ -108,6 +110,16 @@ public class LabView extends JFrame implements ActionListener, Runnable {
                 else {
                     consumerTime = configPanel.getConsumerTSlider().getValue();
                 }
+
+
+                // Synchronized CheckBox
+                if (prodPanel.getSynchronizeThreads_CB().isSelected()) {
+                    sync = false;
+                }
+                else {
+                    sync = true;
+                }
+
 
                 // Setting Final Values
                 controller.getModel().setProducerAmount(producerAmount);
