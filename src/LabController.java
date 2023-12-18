@@ -34,6 +34,9 @@ public class LabController {
         cfCounter.setStockValue(0);
         model.setTotalThreadsCreationTime(0);
         model.setTotalThreadsStartingTime(0);
+        model.setTotalElapsedTime(0);
+        model.setItemsProduced(0);
+        model.setItemsConsumed(0);
     }
 
 

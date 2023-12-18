@@ -71,6 +71,8 @@ public class LabView extends JFrame implements ActionListener, Runnable {
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPfCounter().getStockValue()),0, 2);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCeCounter().getStockValue()),1, 1);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCfCounter().getStockValue()),1, 2);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getPeCounter().getStockValue()-controller.getPfCounter().getStockValue()),0, 3);
+            statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getCeCounter().getStockValue()-controller.getCfCounter().getStockValue()),1, 3);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getModel().getItemsProduced()),0, 4);
             statsPanel.getAgentTable().setValueAt(String.valueOf(controller.getModel().getItemsConsumed()),1, 4);
 
@@ -122,6 +124,14 @@ public class LabView extends JFrame implements ActionListener, Runnable {
                 }
                 else {
                     controller.getModel().setSync(false);
+                }
+
+                // Positive Stock
+                if (prodPanel.getStockPositive_CB().isSelected()) {
+                    controller.getModel().setStockNegative(false);
+                }
+                else {
+                    controller.getModel().setStockNegative(true);
                 }
 
 

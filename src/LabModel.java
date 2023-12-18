@@ -6,7 +6,7 @@ public class LabModel{
     private Product productCounter, peCounter, pfCounter, ceCounter, cfCounter;
     private int producerAmount, consumerAmount, producerProductionAmount, consumerConsumptionAmount, producerTime, consumerTime, itemsProduced, itemsConsumed;
     private long totalThreadsCreationTime, totalThreadsStartingTime, totalElapsedTime;
-    private boolean sync;
+    private boolean sync, isStockNegative;
 
     public LabModel(Product productCounter, Product peCounter, Product pfCounter, Product ceCounter, Product cfCounter) {
         this.productCounter = productCounter;
@@ -21,6 +21,7 @@ public class LabModel{
         this.producerProductionAmount = 100;
         this.consumerConsumptionAmount = 100;
         this.sync = true;
+        this.isStockNegative = true;
     }
 
     public void play(){
@@ -48,7 +49,7 @@ public class LabModel{
         }
 
         for (int i = 0; i < consumerAmount; i++){
-            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter, consumerTime, consumerConsumptionAmount, sync);
+            Consumer consumer = new Consumer(productCounter, ceCounter, cfCounter, consumerTime, consumerConsumptionAmount, sync, isStockNegative);
 
             // AGENT Creation
             threadCreationTime = System.nanoTime();
@@ -205,6 +206,14 @@ public class LabModel{
 
     public void setItemsConsumed(int itemsConsumed) {
         this.itemsConsumed = itemsConsumed;
+    }
+
+    public boolean isStockNegative() {
+        return isStockNegative;
+    }
+
+    public void setStockNegative(boolean stockNegative) {
+        isStockNegative = stockNegative;
     }
 }
 

@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="03cb1631-b86b-48af-bbf9-03dfda191be0" name="Changes" comment="Test Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LabModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LabView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LabView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
